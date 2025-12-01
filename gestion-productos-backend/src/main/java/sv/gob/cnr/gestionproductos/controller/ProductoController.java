@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/productos")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+//Permitir todas las solicitudes de cualquier origen
+@CrossOrigin(origins = "*")
 public class ProductoController {
     private final ProductoService productoService;
 

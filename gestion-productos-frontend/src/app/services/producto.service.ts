@@ -7,7 +7,7 @@ import { Producto } from '../models/producto.model';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:8080/api/productos';
+  private apiUrl = 'https://cnr.3.143.96.106.nip.io/api/productos';
   constructor(private http: HttpClient) { }
   
   listar(nombre?: string, page: number = 0, size: number = 10): Observable<any> {
