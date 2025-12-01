@@ -1,0 +1,40 @@
+.logo-cnr {
+    height: 80px;
+    transition: height 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .logo-cnr {
+      height: 60px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .logo-cnr {
+      height: 60px;
+    }
+  }
+  
+  .logo-gobierno {
+    height: 60px;
+    transition: height 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .logo-gobierno {
+      height: 50px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .logo-gobierno {
+      height: 45px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }

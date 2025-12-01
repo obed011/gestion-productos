@@ -1,0 +1,129 @@
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-dark text-white py-3 d-flex align-items-center">
+                    <i class="bi fs-4 me-2" [ngClass]="esEdicion ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+                    <h5 class="mb-0 fw-bold">
+                        {{ esEdicion ? 'Editar Producto Existente' : 'Registrar Nuevo Producto' }}
+                    </h5>
+                </div>
+
+                <div class="card-body p-4 bg-light bg-opacity-10">
+                    <form (ngSubmit)="guardar()" #form="ngForm">
+
+                        <!-- Nombre del Producto -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-secondary">Nombre del Producto <span
+                                    class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white text-muted border-end-0"><i
+                                        class="bi bi-tag-fill"></i></span>
+                                <input type="text" class="form-control border-start-0 ps-0"
+                                    placeholder="Ingrese el nombre del producto" name="nombre"
+                                    [(ngModel)]="producto.nombre" 
+                                    (ngModelChange)="limpiarError('nombre')"
+                                    required minlength="3" 
+                                    #nombre="ngModel">
+                            </div>
+                            
+                            <!-- Error de validación del FRONTEND -->
+                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched) && !erroresBackend['nombre']"
+                                class="text-danger small mt-1">
+                                <i class="bi bi-exclamation-triangle-fill"></i> El nombre es obligatorio.
+                            </div>
+                            
+                            <!-- Error del BACKEND (si existe) -->
+                            <div *ngIf="erroresBackend['nombre']" class="text-danger small mt-1">
+                                <i class="bi bi-exclamation-triangle-fill"></i> {{ erroresBackend['nombre'] }}
+                            </div>
+                        </div>
+
+                        <!-- Descripción del Producto -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-secondary">Descripción</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Ingrese características técnicas, marca, modelo..." name="descripcion"
+                                [(ngModel)]="producto.descripcion"
+                                (ngModelChange)="limpiarError('descripcion')"></textarea>
+                            
+                            <!-- Error del BACKEND (si existe) -->
+                            <div *ngIf="erroresBackend['descripcion']" class="text-danger small mt-1">
+                                <i class="bi bi-exclamation-triangle-fill"></i> {{ erroresBackend['descripcion'] }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Precio del Producto -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold text-secondary">Precio Unitario ($) <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white text-success border-end-0 fw-bold">$</span>
+                                    <input type="number" class="form-control border-start-0 ps-0" placeholder="0.00"
+                                        name="precio" [(ngModel)]="producto.precio" 
+                                        (ngModelChange)="limpiarError('precio')"
+                                        required min="0.01"
+                                        #precio="ngModel">
+                                </div>
+                                
+                                <!-- Error de validación del FRONTEND -->
+                                <div *ngIf="precio.invalid && (precio.dirty || precio.touched) && !erroresBackend['precio']"
+                                    class="text-danger small mt-1">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> Ingrese un precio válido.
+                                </div>
+                                
+                                <!-- Error del BACKEND (si existe) -->
+                                <div *ngIf="erroresBackend['precio']" class="text-danger small mt-1">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> {{ erroresBackend['precio'] }}
+                                </div>
+                            </div>
+
+                            <!-- Stock del Producto -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold text-secondary">Stock Disponible <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white text-primary border-end-0"><i
+                                            class="bi bi-boxes"></i></span>
+                                    <input type="number" class="form-control border-start-0 ps-0" placeholder="0"
+                                        name="stock" [(ngModel)]="producto.stock" 
+                                        (ngModelChange)="limpiarError('stock')"
+                                        required min="0" pattern="[0-9]+"
+                                        #stock="ngModel">
+                                </div>
+                                
+                                <!-- Error de validación del FRONTEND -->
+                                <div *ngIf="stock.invalid && (stock.dirty || stock.touched) && !erroresBackend['stock']"
+                                    class="text-danger small mt-1">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> El stock debe ser un número entero
+                                    positivo.
+                                </div>
+                                
+                                <!-- Error del BACKEND (si existe) -->
+                                <div *ngIf="erroresBackend['stock']" class="text-danger small mt-1">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> {{ erroresBackend['stock'] }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 text-muted opacity-25">
+
+                        <div class="d-flex justify-content-end gap-3">
+                            <button type="button" class="btn btn-outline-secondary px-4" routerLink="/">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-warning px-5 fw-bold shadow-sm"
+                                [disabled]="form.invalid">
+                                <i class="bi bi-check-lg me-1"></i> {{ esEdicion ? 'Actualizar Datos' : 'Guardar Registro' }}
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

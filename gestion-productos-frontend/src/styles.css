@@ -1,0 +1,37 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+    
+    --bs-primary: #303845;
+    --bs-primary-rgb: 48, 56, 69;
+
+    --bs-secondary: #6c757d;
+    --bs-secondary-rgb: 108, 117, 125;
+
+    --bs-warning: #eba920; 
+    --bs-warning-rgb: 235, 169, 32;
+
+    --bs-dark: #303845;
+    --bs-dark-rgb: 48, 56, 69;
+
+    --bs-info: #E6EEF2;
+    --bs-info-rgb: 230, 238, 242;
+
+    --bs-body-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning);
+}
+
+.bg-dark {
+    background-color: var(--bs-dark) !important;
+}

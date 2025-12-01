@@ -1,0 +1,35 @@
+.expandible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .expandible-content.expanded {
+    max-height: 500px;
+    transition: max-height 0.4s ease-in;
+  }
+  
+  .card {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+  }
+  
+  .btn-link {
+    transition: transform 0.2s;
+  }
+  
+  .btn-link:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 991px) {
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
